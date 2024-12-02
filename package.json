@@ -29,6 +29,7 @@
     "build": "npm run build:browser && tsc -p tsconfig.json",
     "typecheck": " tsc --noEmit --project tsconfig.json",
     "lint": "eslint -c .eslintrc.cjs --ext .ts",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "test:watch": "jest --watchAll",
     "test": "jest --coverage",
