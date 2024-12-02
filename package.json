@@ -33,6 +33,7 @@
     "lint:check": "npm run lint && npm run check",
     "lint:test": "npm run lint && npm run test",
     "lint:typecheck:test": "npm run lint && npm run typecheck && npm run test",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "test:watch": "jest --watchAll",
     "test": "jest --coverage"
