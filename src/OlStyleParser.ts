@@ -152,6 +152,7 @@ export class OlStyleParser implements StyleParser<OlStyleLike> {
 
   title = 'OpenLayers Style Parser';
   olIconStyleCache: any = {};
+  olSymbolizerCache = new Map();
 
   OlStyleConstructor = OlStyle;
   OlStyleImageConstructor = OlStyleImage;
@@ -957,6 +958,11 @@ export class OlStyleParser implements StyleParser<OlStyleLike> {
    * @return The OpenLayers Style object or a StyleFunction
    */
   getOlSymbolizerFromSymbolizer(symbolizer: Symbolizer, feature?: OlFeature): OlStyle {
+    const cacheKey = JSON.stringify(symbolizer);
+    if (this.olSymbolizerCache.has(cacheKey)) {
+      return this.olSymbolizerCache.get(cacheKey);
+    }
+
     let olSymbolizer: any;
     symbolizer = structuredClone(symbolizer);
 
