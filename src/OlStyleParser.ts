@@ -1043,6 +1043,7 @@ export class OlStyleParser implements StyleParser<OlStyleLike> {
       }
     }
 
+    this.olSymbolizerCache.set(cacheKey, olSymbolizer);
     return olSymbolizer;
   }
 
