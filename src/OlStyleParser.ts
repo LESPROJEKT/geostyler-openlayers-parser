@@ -183,7 +183,7 @@ export class OlStyleParser implements StyleParser<OlStyleLike> {
   }
 
   isOlParserStyleFct = (x: any): x is OlParserStyleFct => {
-    return typeof x === 'function';
+    return typeof x === 'function' && '__geoStylerStyle' in x;
   };
 
   /**
@@ -634,7 +634,7 @@ export class OlStyleParser implements StyleParser<OlStyleLike> {
    * @param olStyle The style to be parsed
    * @return The Promise resolving with the GeoStyler-Style Style
    */
-  readStyle(olStyle: OlStyleLike): Promise<ReadStyleResult> {
+  readStyle(olStyle: OlStyle | OlStyle[] | OlParserStyleFct): Promise<ReadStyleResult> {
     return new Promise<ReadStyleResult>((resolve) => {
       try {
         if (this.isOlParserStyleFct(olStyle)) {
